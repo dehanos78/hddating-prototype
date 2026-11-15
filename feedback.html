@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4F1EA">
+<title>Designdate · jouw feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap">
+<style>
+  /* Paper & Ink (The Felt Field design system, 15 nov 2026): geen schaduwen, geen verlopen, accent alleen als stip. */
+  :root { --paper: #F4F1EA; --paper-deep: #ECE8DF; --ink: #1E1F1C; --ink-soft: #3A3934; --muted: #5B5A54; --line: #D9D4C7; --accent: #B9843A;
+    --display: "Fraunces", Georgia, serif; --body: "Inter", system-ui, sans-serif; --radius-s: 4px; --radius-m: 8px; --radius-l: 12px; }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-left)) 80px max(16px, env(safe-area-inset-right)); display: grid; gap: 22px; }
+  .brand { font-family: var(--display); font-weight: 300; font-size: 20px; letter-spacing: -0.01em; display: inline-flex; align-items: baseline; gap: 8px; }
+  .brand::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); align-self: center; }
+  .brand small { font-size: 13px; color: var(--muted); }
+  h1 { font-family: var(--display); font-weight: 300; font-size: 32px; line-height: 1.1; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 300; font-size: 22px; line-height: 1.2; margin: 0; }
+  p { margin: 0; }
+  .sub { color: var(--ink-soft); }
+  .eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+  .eyebrow::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+  .q { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 12px; }
+  .q .help { color: var(--muted); font-size: 14px; }
+  .opts { display: grid; gap: 8px; }
+  .opt { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius-m); background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; width: 100%; }
+  .opt i { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--muted); flex: none; display: grid; place-items: center; }
+  .opt i::after { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+  .opt[aria-pressed="true"] { border-color: var(--ink); }
+  .opt[aria-pressed="true"] i { border-color: var(--ink); }
+  .opt[aria-pressed="true"] i::after { background: var(--ink); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .row .opt { width: auto; min-height: 44px; padding: 8px 14px; }
+  label.field { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  input[type=text], textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: var(--radius-m); padding: 11px 14px; width: 100%; }
+  input[type=text] { min-height: 48px; }
+  textarea { min-height: 72px; resize: vertical; }
+  .btn { min-height: 48px; padding: 0 26px; border: 1px solid var(--ink); border-radius: var(--radius-m); background: var(--ink); color: var(--paper); font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  .btn.ghost { background: transparent; color: var(--ink); font-weight: 400; }
+  .send { border-top: 1px solid var(--ink); padding-top: 18px; display: grid; gap: 12px; }
+  .send .note { font-size: 13px; color: var(--muted); }
+  .status { font-size: 14px; color: var(--ink-soft); min-height: 1.4em; }
+  .preview { white-space: pre-wrap; font-size: 13px; color: var(--ink-soft); background: var(--paper-deep); padding: 12px 14px; border-radius: var(--radius-m); display: none; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <span class="brand">designdate <small>the felt field</small></span>
+    <h1>Vijf vragen over wat je net zag</h1>
+    <p class="sub">Tik je antwoorden aan, typ waar je wilt iets erbij, en stuur het onderaan in één keer naar Viktor. Het hoeft niet mooi; eerlijk is genoeg. Een kwartier is ruim.</p>
+  </header>
+
+  <section class="q" id="wie">
+    <span class="eyebrow">Eerst even</span>
+    <label class="field">Je voornaam<input type="text" id="naam" autocomplete="given-name"></label>
+    <div class="row" data-q="hd" role="group" aria-label="Ken je Human Design">
+      <span style="width:100%;font-size:13px;color:var(--muted)">Ken je Human Design?</span>
+      <button type="button" class="opt" data-v="Ja"><i></i>Ja</button>
+      <button type="button" class="opt" data-v="Een beetje"><i></i>Een beetje</button>
+      <button type="button" class="opt" data-v="Nee"><i></i>Nee</button>
+    </div>
+    <div class="row" data-q="relatie" role="group" aria-label="Met wie vergeleken">
+      <span style="width:100%;font-size:13px;color:var(--muted)">Met wie heb je jezelf vergeleken?</span>
+      <button type="button" class="opt" data-v="Partner"><i></i>Partner</button>
+      <button type="button" class="opt" data-v="Ex"><i></i>Ex</button>
+      <button type="button" class="opt" data-v="Vriend(in)"><i></i>Vriend of vriendin</button>
+      <button type="button" class="opt" data-v="Verzonnen"><i></i>Verzonnen</button>
+    </div>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Vraag 1</span>
+    <h2>Herken je jezelf?</h2>
+    <p class="help">Kijk bij Design naar wat er over jou staat: je type, hoe je beslist, je rode draad en wat bij jou wakker wordt.</p>
+    <div class="opts" data-q="v1" role="group" aria-label="Herkenning">
+      <button type="button" class="opt" data-v="Klopt grotendeels"><i></i>Klopt grotendeels</button>
+      <button type="button" class="opt" data-v="Deels"><i></i>Deels: iets klopt, iets niet</button>
+      <button type="button" class="opt" data-v="Klopt niet"><i></i>Klopt niet</button>
+    </div>
+    <label class="field">Wat klopt niet, of wat vond je te vaag?<textarea id="v1t"></textarea></label>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Vraag 2</span>
+    <h2>Begreep je de kaart zonder uitleg?</h2>
+    <p class="help">De eerste kaart, met de kop en de drie regels eronder.</p>
+    <div class="opts" data-q="v2" role="group" aria-label="Begrip van de kaart">
+      <button type="button" class="opt" data-v="Ja"><i></i>Ja, meteen</button>
+      <button type="button" class="opt" data-v="Half"><i></i>Half: na het openklappen van Waarom past dit?</button>
+      <button type="button" class="opt" data-v="Nee"><i></i>Nee</button>
+    </div>
+    <label class="field">Wat betekenden Vonk, Herkenning en Ruimte voor jou toen je ze voor het eerst las?<textarea id="v2t"></textarea></label>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Vraag 3</span>
+    <h2>Wat raakte je, wat sloeg je over?</h2>
+    <label class="field">Eén zin of onderdeel dat je bijbleef<textarea id="v3a"></textarea></label>
+    <label class="field">Eén dat je niet begreep of hebt overgeslagen<textarea id="v3b"></textarea></label>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Vraag 4</span>
+    <h2>Zou je ja zeggen?</h2>
+    <p class="help">Stel dat dit een echte kaart was van iemand die je nog niet kent.</p>
+    <div class="opts" data-q="v4" role="group" aria-label="Ja tikken">
+      <button type="button" class="opt" data-v="Ja"><i></i>Ja, ik zou ja tikken</button>
+      <button type="button" class="opt" data-v="Twijfel"><i></i>Twijfel</button>
+      <button type="button" class="opt" data-v="Nee"><i></i>Nee</button>
+    </div>
+    <div class="row" data-q="v4d" role="group" aria-label="Doorslag">
+      <span style="width:100%;font-size:13px;color:var(--muted)">Wat gaf de doorslag?</span>
+      <button type="button" class="opt" data-v="De foto"><i></i>De foto</button>
+      <button type="button" class="opt" data-v="De tekst over de designs"><i></i>De tekst over de designs</button>
+      <button type="button" class="opt" data-v="Allebei"><i></i>Allebei</button>
+    </div>
+    <label class="field">Wat miste je op de kaart?<textarea id="v4t"></textarea></label>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Vraag 5</span>
+    <h2>Zou je het rapport willen?</h2>
+    <p class="help">Na een match kun je een rapport over jullie twee krijgen: zo'n twintig pagina's, met gespreksvragen en een hoofdstuk over intimiteit en seksualiteit dat je alleen daar leest.</p>
+    <div class="opts" data-q="v5" role="group" aria-label="Rapport willen">
+      <button type="button" class="opt" data-v="Ja"><i></i>Ja, dat wil ik lezen</button>
+      <button type="button" class="opt" data-v="Misschien"><i></i>Misschien</button>
+      <button type="button" class="opt" data-v="Nee"><i></i>Nee</button>
+    </div>
+    <div class="row" data-q="v5b" role="group" aria-label="Bedrag">
+      <span style="width:100%;font-size:13px;color:var(--muted)">Wat zou je ervoor betalen?</span>
+      <button type="button" class="opt" data-v="Niets"><i></i>Niets</button>
+      <button type="button" class="opt" data-v="5 euro"><i></i>5</button>
+      <button type="button" class="opt" data-v="10 euro"><i></i>10</button>
+      <button type="button" class="opt" data-v="20 euro of meer"><i></i>20 of meer</button>
+    </div>
+  </section>
+
+  <section class="q">
+    <span class="eyebrow">Ken je Human Design</span>
+    <label class="field">Klopt de bodygraph met de kaart die je al had, en wat zou jij anders uitleggen? (mag leeg)<textarea id="hdt"></textarea></label>
+  </section>
+
+  <section class="send">
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <button type="button" class="btn" id="stuur">Stuur naar Viktor</button>
+    <button type="button" class="btn ghost" id="kopieer">Kopieer de tekst</button>
+    <p class="note">De knop opent WhatsApp met je antwoorden als bericht. Kies daar Viktor en verstuur. Lukt dat niet, kopieer dan de tekst en plak hem in een bericht. Je antwoorden blijven tot die tijd alleen op dit toestel.</p>
+    <pre class="preview" id="preview"></pre>
+  </section>
+</div>
+
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const KEY = "dd-feedback-v1";
+  const keuzes = {};
+  const velden = ["naam", "v1t", "v2t", "v3a", "v3b", "v4t", "hdt"];
+
+  function laad() {
+    try { const d = JSON.parse(localStorage.getItem(KEY) || "{}"); Object.assign(keuzes, d.keuzes || {}); velden.forEach((id) => { if (d[id]) $("#" + id).value = d[id]; }); } catch (e) {}
+  }
+  function bewaar() {
+    try { const d = { keuzes }; velden.forEach((id) => { d[id] = $("#" + id).value; }); localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+  }
+  function teken() {
+    document.querySelectorAll("[data-q]").forEach((g) => {
+      const q = g.dataset.q;
+      g.querySelectorAll(".opt").forEach((b) => b.setAttribute("aria-pressed", String(keuzes[q] === b.dataset.v)));
+    });
+  }
+  document.querySelectorAll("[data-q] .opt").forEach((b) => b.addEventListener("click", () => {
+    const q = b.closest("[data-q]").dataset.q;
+    keuzes[q] = keuzes[q] === b.dataset.v ? "" : b.dataset.v;
+    teken(); bewaar();
+  }));
+  velden.forEach((id) => $("#" + id).addEventListener("input", bewaar));
+
+  const t = (id) => $("#" + id).value.trim();
+  const k = (q) => keuzes[q] || "";
+  function tekst() {
+    const r = [];
+    r.push(`Designdate feedback van ${t("naam") || "(geen naam)"}`);
+    r.push(`Kent HD: ${k("hd") || "-"} · Vergeleken met: ${k("relatie") || "-"}`);
+    r.push("");
+    r.push(`1 Herkenning: ${k("v1") || "-"}`); if (t("v1t")) r.push(t("v1t"));
+    r.push(`2 Kaart begrepen: ${k("v2") || "-"}`); if (t("v2t")) r.push(t("v2t"));
+    r.push(`3 Bleef bij: ${t("v3a") || "-"}`); r.push(`3 Oversloeg: ${t("v3b") || "-"}`);
+    r.push(`4 Ja tikken: ${k("v4") || "-"} · Doorslag: ${k("v4d") || "-"}`); if (t("v4t")) r.push(`Miste: ${t("v4t")}`);
+    r.push(`5 Rapport: ${k("v5") || "-"} · Bedrag: ${k("v5b") || "-"}`);
+    if (t("hdt")) { r.push(""); r.push(`HD: ${t("hdt")}`); }
+    return r.join("\n");
+  }
+  function compleet() {
+    const mist = [];
+    if (!t("naam")) mist.push("je voornaam");
+    ["v1", "v2", "v4", "v5"].forEach((q, i) => { if (!k(q)) mist.push("vraag " + [1, 2, 4, 5][i]); });
+    return mist;
+  }
+  $("#stuur").addEventListener("click", async () => {
+    const mist = compleet();
+    if (mist.length) { $("#status").textContent = "Vul nog even in: " + mist.join(", ") + "."; return; }
+    const body = tekst();
+    $("#status").textContent = "";
+    if (navigator.share) {
+      try { await navigator.share({ text: body }); $("#status").textContent = "Dank je wel. Als het versturen is gelukt, ben je klaar."; return; }
+      catch (e) { if (e && e.name === "AbortError") return; }
+    }
+    window.open("https://wa.me/?text=" + encodeURIComponent(body), "_blank", "noopener");
+    $("#status").textContent = "WhatsApp opent met je antwoorden. Kies Viktor en verstuur.";
+  });
+  $("#kopieer").addEventListener("click", async () => {
+    const body = tekst();
+    $("#preview").textContent = body; $("#preview").style.display = "block";
+    try { await navigator.clipboard.writeText(body); $("#status").textContent = "Gekopieerd. Plak de tekst in een bericht aan Viktor."; }
+    catch (e) { $("#status").textContent = "Kopiëren lukte niet automatisch; selecteer de tekst hieronder en kopieer hem zelf."; }
+  });
+  laad(); teken();
+})();
+</script>
+</body>
+</html>
